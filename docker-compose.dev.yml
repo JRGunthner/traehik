@@ -1,0 +1,23 @@
+version: "3.6"
+services:
+  traefik-jgtche:
+    build: .
+    image: traefik-jgtche:latest
+    container_name: traefik-jgtche
+    restart: unless-stopped
+    networks:
+      - docker
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./dconf:/etc/traefik/dconf
+      - ./acme:/etc/traefik/acme
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "2"
+networks:
+  docker:
+    name: docker

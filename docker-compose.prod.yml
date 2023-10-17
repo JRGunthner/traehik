@@ -1,0 +1,9 @@
+version: "3.6"
+services:
+  traefik:
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /dconf:/etc/traefik/dconf
+      - /acme:/etc/traefik/acme
